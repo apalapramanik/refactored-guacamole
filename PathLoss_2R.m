@@ -1,4 +1,4 @@
-function p_received = PathLoss_2R(tx_pos, rx_pos, p_t, g_t, g_r, lambda)
+function p_received = PathLoss_2R(tx_pos, rx_pos, p_t, g_t, g_r)
 
 xdiff = abs(tx_pos(1) - rx_pos(1));
 ydiff = abs(tx_pos(2) - rx_pos(2));

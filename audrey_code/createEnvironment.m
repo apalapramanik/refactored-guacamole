@@ -28,7 +28,7 @@ function createEnvironment()
 
     % Plot rays originating from a sample transmitter position
     transceiverPosition = [5 5 1]; % Example transmitter position
-    plotRays(transceiverPosition, 5); % Generate and plot 5 rays
+    plotRays(transceiverPosition, 10); % Generate and plot 5 rays
 
     hold off;
     view(3); % Set 3D view
