@@ -1,0 +1,63 @@
+classdef Transmitter < handle
+    properties
+        Position % Position of the transmitter in 3D space
+        Rays % Array of Ray objects
+        rayLength
+    end
+    
+    methods
+        function obj = Transmitter(position)
+            obj.Position = position;
+            obj.rayLength = 10;
+            obj.Rays = Ray.empty(0, 1); % Initialize Rays as an empty array
+        end
+        
+        function obj = generateRays(obj, numTheta, numPhi)
+            thetaValues = linspace(0, 2*pi, numTheta);
+            phiValues = linspace(0, pi, numPhi);
+            
+            for theta = thetaValues
+                for phi = phiValues
+                    direction = [sin(phi) * cos(theta), sin(phi) * sin(theta), cos(phi)];
+                    ray = Ray(obj.Position, direction);
+                    obj.Rays = [obj.Rays, ray];
+                end
+            end
+        end
+
+         % Example method to add a ray
+        function obj = addRay(obj, ray)
+            if isa(ray, 'Ray')
+                obj.Rays(end + 1) = ray; % Append new ray to the array
+                 %fprintf("adding ray: %s. Current num elements = %d\n", ray.toString(), numel(obj.Rays));
+            else
+                error('Input must be an instance of class A');
+            end
+        end
+        
+        function printRays(obj)
+            n = numel(obj.Rays);
+            for i = 1:n
+                %fprintf("%s\n", obj.Rays(i).toString);
+            end
+            fprintf("total num rays = %d\n", numel(obj.Rays));
+        end
+
+        function plotTransmitter(obj)
+            % Plot the transmitter's position
+            grid on;
+            plot3(obj.Position(1), obj.Position(2), obj.Position(3), 'ro', 'MarkerSize', 10, 'DisplayName', 'Transmitter');
+            hold on;
+            obj.plotRays(obj.rayLength, 'r');
+        end
+        
+        function plotRays(obj, length, color)
+            % Call each Ray's plot method
+            n = numel(obj.Rays);
+            for i = 1:n
+                fprintf(obj.Rays(i).toString);
+                obj.Rays(i).plotRay(length, color);
+            end
+        end
+    end
+end

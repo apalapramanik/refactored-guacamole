@@ -1,40 +1,42 @@
 function createEnvironment()
     clc;
     clear variables;
-    figure;
-    axis equal;
-    xlabel('X'); ylabel('Y'); zlabel('Z');
-    xlim([0 50]); ylim([0 50]); zlim([0 50]);
+    % figure;
+    % grid on;
+    % axis equal;
+    % xlabel('X'); ylabel('Y'); zlabel('Z');
+    % xlim([0 50]); ylim([0 50]); zlim([0 50]);
 
     % Initialize environment objects
     Tx = Transmitter([25, 25, 5]);
     tx_power = 10;
     
     surfaces = {
-        Wall([0 50 0], [50 50 50]), ...
+        Wall([0 0 0], [50 0 50]), Wall([0 50 0], [50 50 50]), ...
         Floor([0 0 0], [50 50 0]), Obstacle([10, 10, 0], [5, 5, 3])
     };
     
-    for i = 1:numel(surfaces)
-        surfaces{i}.plotWall();
-    end
+    % for i = 1:numel(surfaces)
+    %     surfaces{i}.plotWall();
+    % end
 
     % Ray plotting example
     theta = linspace(0, 2 * pi, 12);
     phi = linspace(0, pi, 6);
+    i = 1;
 
     for t = theta
         for p = phi
             dir = [sin(p) * cos(t), sin(p) * sin(t), cos(p)];
             ray = Ray(Tx.Position, dir, tx_power);
             Tx.addRay(ray);
+            fprintf("i = %d\n")
         end
     end
     
     Tx.printRays();
-    Tx.plotTransmitter();
-    grid on;
-    hold off;
-    view(3);
-    title('3D Environment with Ray Tracing');
+    %Tx.plotTransmitter();
+    % hold off;
+    % view(3);
+    % title('3D Environment with Ray Tracing');
 end
