@@ -19,6 +19,7 @@ classdef Wall
             fprintf("plotting wall\n");
         end
         
+        
         function normal = getNormal(obj)
             v1 = obj.Vertices(2, :) - obj.Vertices(1, :);
             v2 = obj.Vertices(3, :) - obj.Vertices(1, :);
