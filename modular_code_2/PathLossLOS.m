@@ -1,16 +1,14 @@
 % PathLoss.m
-function [pr, color] = PathLossLOS(d, Tx_power)
+function [pr, color] = PathLossLOS(d, Tx_power, freq)
     g_t = 1;
     g_r = 1;
     c = 3e8; % Speed of light in m/s
-    freq = 60e9; % Frequency in Hz (60 GHz)
-    % lambda = c / freq; % Wavelength calculation
-    lambda = 0.5;
+    lambda = c / freq; % Wavelength calculation
     Tx_power = 10 ^ (Tx_power / 10);
     pr = Tx_power * g_t * g_r * (lambda / (4 * pi * d))^2;
     pr = 10 * log10(pr);
     startValue = -10;
-    stepSize = 15;
+    stepSize = 10;
     val = startValue;
     colors = ["m", "r", "y", "g", "c", "b", "k"];
     i = 1;

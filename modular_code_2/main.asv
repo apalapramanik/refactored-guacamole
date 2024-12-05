@@ -65,7 +65,7 @@ end
 val = val + stepSize;
 labels(length(colors)) = sprintf("rx <= %.2f dBW", val);
 legend_x = 0.05; % Normalized figure X position
-legend_y = 0.35; % Normalized figure Y position
+legend_y = 0.25; % Normalized figure Y position
 box_width = 0.05; % Width of colored boxes (normalized)
 box_height = 0.03; % Height of colored boxes (normalized)
 gap = 0.01; % Gap between boxes and labels
@@ -73,7 +73,7 @@ gap = 0.01; % Gap between boxes and labels
 % Add a title to the legend
 annotation('textbox', ...
            [legend_x, legend_y + 0.05, 0.2, box_height], ... % Position above legend
-           'String', 'Received Power Levels by Color', 'EdgeColor', 'none', ...
+           'String', 'Legend', 'EdgeColor', 'none', ...
            'FontWeight', 'bold', 'FontSize', 10, ...
            'HorizontalAlignment', 'left', 'VerticalAlignment', 'middle');
 
@@ -81,6 +81,7 @@ annotation('textbox', ...
 for i = 1:length(labels)
     % Calculate positions for each row
     current_y = legend_y - (i - 1) * (box_height + gap);
+    fprintf("i = %f, y = %f\n", i, current_y);
     % Add a color box
     annotation('rectangle', ...
                [legend_x, current_y, box_width, box_height], ...
@@ -96,7 +97,7 @@ end
 % Add a big box around the entire legend
 total_height = length(labels) * (box_height + gap) - gap; % Total height of all rows
 annotation('rectangle', ...
-           [0.04, legend_y - total_height, box_width + 0.12, total_height + box_height + 0.05], ...
+           [0.04, legend_y - total_height, box_width + 0.2, total_height + 0.05], ...
            'EdgeColor', 'k', 'LineWidth', 1.5);
 %create annotation for tx position, power, etc
 textStr = sprintf('Plot Information:\nTx position: x = %.2f, y = %.2f, z = %.2f\nTxPower = %.2f W\nReflection Coefficient = %.2f\nFrequency = %s', Tx(1), Tx(2), Tx(3), txPower, reflection_coefficient, getFreqString(freq));

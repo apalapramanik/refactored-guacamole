@@ -1,7 +1,7 @@
 
 
 % Function to plot rays and simulate up to two reflections off all surfaces
-function plotRaysWithReflections(Tx, surfaces, txStartPower, reflection_coefficient)
+function plotRaysWithReflections(Tx, surfaces, txStartPower, reflection_coefficient, freq)
   
     % numTheta = 12; % Number of steps for theta (horizontal angle)
     % numPhi = 6; % Number of steps for phi (vertical angle)
@@ -34,7 +34,7 @@ function plotRaysWithReflections(Tx, surfaces, txStartPower, reflection_coeffici
                         startPoint = currentOrigin;
                         endPoint = currentOrigin + length * currentDirection;
                         while dist <= distance 
-                            [pr, color] = PathLossLOS(dist, txPower);
+                            [pr, color] = PathLossLOS(dist, txPower, freq);
                            plot3([startPoint(1), endPoint(1)], ...
                                 [startPoint(2), endPoint(2)], ...
                                 [startPoint(3), endPoint(3)], color, 'LineWidth', 1.5);
@@ -57,7 +57,7 @@ function plotRaysWithReflections(Tx, surfaces, txStartPower, reflection_coeffici
      
 
                              dist= dist + length;
-                             [pr, color] = PathLossLOS(dist, txPower); % Get the gradient color (RGB triplet)
+                             [pr, color] = PathLossLOS(dist, txPower, freq); % Get the gradient color (RGB triplet)
 
                             
                                                     
