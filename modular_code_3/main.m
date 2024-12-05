@@ -6,7 +6,7 @@ warning('off', 'all');
 [surfaces, envWidth, envHeight, envDepth] = setupEnvironment();
 
 % Transmitter setup
-Tx = [30, 20, 5]; % Example transmitter position
+Tx = [42, 20, 5]; % Example transmitter position
 plotTransmitter(Tx);
 
 % Parameters

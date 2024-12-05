@@ -1,6 +1,6 @@
 function [powerData, distanceData] = plotRaysWithReflections(Tx, surfaces, txPower, reflection_coefficient, freq, pathLossExponent, shadowingStdDev)
     % Constants
-    maxReflections = 5; % Maximum number of reflections
+    maxReflections = 3; % Maximum number of reflections
     powerThreshold = -100; % Minimum power in dBm to continue tracing rays
     stepSize = 0.1; % Increment for tracing ray segments
     c = 3e8; % Speed of light in m/s
