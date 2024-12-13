@@ -2,6 +2,7 @@
 
 ## Overview
 This repository implements a 3D ray tracing framework for wireless communication propagation modeling. It simulates signal behavior at millimeter-wave (mmWave) frequencies, capturing effects like free-space path loss, reflections, and log-normal shadowing.
+![3D Ray Tracing Simulation](images/6.svg)
 
 ## Features
 - Simulates free-space path loss, reflections, and shadowing.
