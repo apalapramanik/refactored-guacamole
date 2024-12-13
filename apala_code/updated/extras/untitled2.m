@@ -1,1 +1,0 @@
-antH = create60GHzHPolarizedAntennaWithBeamwidth();

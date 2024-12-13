@@ -1,4 +1,0 @@
-
-
-tx = createTransmitter();
-rx = createReceiver();
